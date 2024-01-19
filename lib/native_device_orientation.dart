@@ -48,8 +48,6 @@ class NativeDeviceOrientationCommunicator {
 
   Future<NativeDeviceOrientation> orientation({
     bool useSensor = false,
-    NativeDeviceOrientation defaultOrientation =
-        NativeDeviceOrientation.portraitUp,
   }) async {
     final params = <String, dynamic>{
       'useSensor': useSensor,
@@ -77,8 +75,7 @@ class NativeDeviceOrientationCommunicator {
 
   Stream<NativeDeviceOrientation> onOrientationChanged({
     bool useSensor = false,
-    NativeDeviceOrientation defaultOrientation =
-        NativeDeviceOrientation.portraitUp,
+
   }) {
     if (_stream == null || _stream!.useSensor != useSensor) {
       final params = <String, dynamic>{
