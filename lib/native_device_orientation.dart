@@ -57,10 +57,10 @@ class NativeDeviceOrientationCommunicator {
     previousOrientation.value = orientationString.toString();
     final orientation = _fromString(orientationString);
     return (orientation == NativeDeviceOrientation.unknown)
-        ? previousOrientation.value == "LandscapeLeft"
-        ? NativeDeviceOrientation.landscapeLeft
-        : NativeDeviceOrientation.landscapeRight
-        : orientation;
+         ? previousOrientation.value == "PortraitUp"
+                ? NativeDeviceOrientation.portraitUp
+                : NativeDeviceOrientation.landscapeLeft
+            : orientation;
   }
 
   // these methods are needed to pause listening to sensorRequests when the app goes to background
@@ -91,9 +91,9 @@ class NativeDeviceOrientationCommunicator {
     }
     return _stream!.stream.map((orientation) =>
         (orientation == NativeDeviceOrientation.unknown)
-            ? previousOrientation.value == "LandscapeLeft"
-            ? NativeDeviceOrientation.landscapeLeft
-            : NativeDeviceOrientation.landscapeRight
+             ? previousOrientation.value == "PortraitUp"
+                ? NativeDeviceOrientation.portraitUp
+                : NativeDeviceOrientation.landscapeLeft
             : orientation);
   }
 
